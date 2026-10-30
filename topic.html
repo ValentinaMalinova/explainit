@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="bg">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Интерактивна научна лаборатория ExplainIt — експериментирай с космоса, Земята и технологиите.">
+  <meta name="theme-color" content="#10130f">
+  <title>Интерактивна лаборатория — ExplainIt</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="topic.css">
+  <script src="topic.js" defer></script>
+</head>
+<body class="lab-body">
+  <header class="header lab-header">
+    <a class="brand" href="index.html#home" aria-label="ExplainIt — начало"><span class="logo">E</span><span>Explain<span class="accent">It</span><small>РАЗБЕРИ СВЕТА</small></span></a>
+    <nav class="topic-nav" aria-label="Главна навигация"><a href="index.html#discover">← Всички теми</a><button id="themeButton" class="theme-button" aria-label="Смени темата">☾</button></nav>
+  </header>
+
+  <main class="wrap topic-page">
+    <div class="lab-breadcrumb"><a href="index.html#discover">Открий</a><span>/</span><span>Интерактивна лаборатория</span><span class="lab-breadcrumb-dot"></span><span id="topicCategory">КОСМОС</span></div>
+
+    <section class="lab-hero">
+      <div class="lab-hero-copy">
+        <p class="eyebrow"><span class="dot"></span> EXPLAINIT LAB <span class="eyebrow-divider">/</span> УЧИ ЧРЕЗ ОПИТ</p>
+        <h1 id="topicTitle">Тайните на <span class="accent">Вселената.</span></h1>
+        <p class="topic-lead" id="topicIntro">Промени настройките, пусни симулацията и разбери какво се случва.</p>
+        <div class="lab-tags"><span><i class="tag-live-dot"></i> ЖИВА СИМУЛАЦИЯ</span><span id="topicDifficulty">НИВО 01 · ИЗСЛЕДОВАТЕЛ</span><span>НЕ Е НУЖЕН ОПИТ</span></div>
+      </div>
+      <aside class="progress-widget" aria-label="Общ напредък">
+        <div class="progress-widget-top"><span>ТВОЯТ ПРОГРЕС</span><span class="progress-glyph">✳</span></div>
+        <div class="progress-score"><strong id="completedCount">0</strong><span>/ 3</span></div>
+        <p>завършени експеримента</p>
+        <div class="overall-progress"><span id="overallProgressFill"></span></div>
+        <span class="progress-foot" id="overallProgressLabel">Първата мисия те чака.</span>
+      </aside>
+    </section>
+
+    <section class="lab-workspace" aria-label="Интерактивен експеримент">
+      <div class="scene-column">
+        <div class="scene-card">
+          <div class="scene-topbar"><div class="scene-label"><span class="scene-target-icon">◉</span><span id="sceneLabel">ОРБИТАЛЕН СИМУЛАТОР</span></div><div class="scene-live"><span class="live-pulse"></span><span id="liveLabel">READY TO EXPLORE</span></div></div>
+          <div class="scene-wrap"><canvas id="sceneCanvas" aria-label="Анимирана интерактивна научна симулация"></canvas><div class="scene-vignette"></div><div class="scene-overlay-top"><span class="coordinate-label" id="coordinateLabel">SECTOR 001 · MILKY WAY</span><span class="scene-hint" id="sceneHint">Промени стойностите вдясно</span></div><div class="scene-overlay-bottom"><div><span class="scene-bottom-kicker">НАБЛЮДАВАЙ</span><strong id="sceneCaption">Една малка промяна може да промени всичко.</strong></div><span class="scene-crosshair">+</span></div></div>
+          <div class="scene-metrics" aria-live="polite">
+            <div class="scene-metric"><span class="metric-label" id="metricLabelA">ГРАВИТАЦИЯ</span><strong id="metricValueA">50<span>%</span></strong></div>
+            <div class="scene-metric"><span class="metric-label" id="metricLabelB">СКОРОСТ НА СТАРТА</span><strong id="metricValueB">100<span>%</span></strong></div>
+            <div class="scene-metric"><span class="metric-label" id="metricLabelC">ВРЕМЕ В ОРБИТА</span><strong id="metricValueC">00:00</strong></div>
+          </div>
+        </div>
+
+        <section class="mission-card" aria-label="Текуща мисия">
+          <div class="mission-icon-wrap" id="missionIconWrap"><span id="missionIcon">◎</span></div>
+          <div class="mission-copy"><div class="mission-heading-line"><p class="eyebrow">МИСИЯ 01 <span class="eyebrow-divider">/</span> ПРЕДИЗВИКАТЕЛСТВО</p><span class="mission-status" id="missionStatus">В ПРОЦЕС</span></div><h2 id="missionTitle">Задръж планетата в орбита</h2><p id="missionText">Настрой гравитацията и скоростта. Успей да поддържаш стабилна орбита, за да завършиш мисията.</p><div class="mission-progress-row"><div class="mission-progress-track"><span id="missionProgress"></span></div><span id="missionProgressLabel">0% завършено</span></div></div>
+        </section>
+      </div>
+
+      <aside class="control-panel">
+        <div class="control-panel-head"><div><p class="eyebrow">ТВОЯТА КОНЗОЛА</p><h2>Ти управляваш.</h2></div><span class="console-dots"><i></i><i></i><i></i></span></div>
+        <p class="control-intro" id="controlIntro">Променяй параметрите. Симулацията ще реагира на всяко твое действие.</p>
+
+        <div class="topic-controls" id="spaceControls" hidden>
+          <div class="control-group"><div class="control-label-row"><label for="gravityRange">Сила на гравитацията</label><output id="gravityValue" for="gravityRange">50%</output></div><input class="lab-range" id="gravityRange" type="range" min="10" max="100" value="50"><div class="range-ends"><span>Слаба</span><span>Силна</span></div></div>
+          <div class="control-group"><div class="control-label-row"><label for="speedRange">Скорост при старта</label><output id="speedValue" for="speedRange">100%</output></div><input class="lab-range" id="speedRange" type="range" min="50" max="160" value="100"><div class="range-ends"><span>По-бавно</span><span>По-бързо</span></div></div>
+          <div class="science-tip"><span class="tip-icon">✳</span><p><strong>Малък жокер</strong><br>Твърде бавно — планетата може да падне. Твърде бързо — може да избяга.</p></div>
+          <div class="diagnostics-card" id="orbitDiagnostics"><div class="diagnostics-head"><span>ОРБИТАЛНА ТЕЛЕМЕТРИЯ</span><span id="orbitDiagnosticState">STANDBY</span></div><div class="diagnostic-row"><span>Текуща скорост</span><strong id="orbitLiveSpeed">0 px/s</strong></div><div class="diagnostic-row"><span>Разстояние до звездата</span><strong id="orbitDistance">—</strong></div><div class="diagnostic-meter"><span id="orbitRiskBar"></span></div><p id="orbitDiagnosticNote">Данните ще се обновяват в реално време след старта.</p></div>
+          <div class="control-buttons"><button class="button primary action-button" id="launchButton" type="button"><span class="button-symbol">▶</span> Стартирай орбитата</button><button class="icon-button" id="resetSpaceButton" type="button" aria-label="Нулирай симулацията" title="Нулирай">↻</button></div>
+        </div>
+
+        <div class="topic-controls" id="earthControls" hidden>
+          <div class="control-group"><div class="control-label-row"><label for="pressureRange">Налягане в магмената камера</label><output id="pressureValue">42%</output></div><input class="lab-range" id="pressureRange" type="range" min="0" max="100" value="42"><div class="range-ends"><span>Спокойно</span><span>Критично</span></div></div>
+          <div class="control-group"><div class="control-label-row"><label for="gasRange">Натрупване на газове</label><output id="gasValue">35%</output></div><input class="lab-range" id="gasRange" type="range" min="0" max="100" value="35"><div class="range-ends"><span>Малко</span><span>Много</span></div></div>
+          <div class="volcano-gauge"><div class="gauge-head"><span>АКТИВНОСТ НА МОДЕЛА</span><strong id="volcanoLevel">УМЕРЕНА</strong></div><div class="gauge-track"><span id="volcanoGaugeFill"></span><i></i><i></i><i></i><i></i></div><p id="volcanoConsoleStatus">Наблюдавай как се променя вулканът.</p></div>
+          <div class="science-tip"><span class="tip-icon">✳</span><p><strong>Малък жокер</strong><br>Изригването в този модел изисква високо налягане и достатъчно натрупани газове.</p></div>
+          <div class="diagnostics-card" id="earthChecklist"><div class="diagnostics-head"><span>ПРОВЕРКА ПРЕДИ ИЗРИГВАНЕ</span><span id="earthReadyLabel">WAITING</span></div><div class="diagnostic-row"><span>Налягане поне 72%</span><strong id="pressureCheck">○</strong></div><div class="diagnostic-row"><span>Газове поне 55%</span><strong id="gasCheck">○</strong></div><p id="earthChecklistNote">Нагласи двата параметъра, за да станат условията подходящи.</p></div>
+          <div class="control-buttons"><button class="button primary action-button" id="igniteButton" type="button"><span class="button-symbol">↯</span> Симулирай изригване</button><button class="icon-button" id="resetEarthButton" type="button" aria-label="Нулирай симулацията" title="Нулирай">↻</button></div>
+        </div>
+
+        <div class="topic-controls" id="techControls" hidden>
+          <div class="control-group"><div class="control-label-row"><label for="distanceRange">Разстояние до рутера</label><output id="distanceValue">3 / 5</output></div><input class="lab-range" id="distanceRange" type="range" min="1" max="5" value="3"><div class="range-ends"><span>Наблизо</span><span>Далеч</span></div></div>
+          <div class="control-group"><div class="control-label-row"><label for="wallsRange">Препятствия по пътя</label><output id="wallsValue">1 стена</output></div><input class="lab-range" id="wallsRange" type="range" min="0" max="5" value="1"><div class="range-ends"><span>Свободен път</span><span>Много стени</span></div></div>
+          <div class="control-group"><div class="control-label-row"><span class="fake-label">Честота на сигнала</span><output id="frequencyValue">2.4 GHz</output></div><div class="frequency-switch" role="group" aria-label="Избор на честота"><button type="button" class="frequency-option selected" data-frequency="2.4" aria-pressed="true">2.4 GHz <small>По-добре през стени</small></button><button type="button" class="frequency-option" data-frequency="5" aria-pressed="false">5 GHz <small>По-висока скорост</small></button></div></div>
+          <div class="signal-readout"><div class="signal-readout-top"><span>СИЛА НА СИГНАЛА</span><strong id="signalPercent">74%</strong></div><div class="signal-bars" id="signalBars"><i></i><i></i><i></i><i></i><i></i></div><p id="wifiConsoleStatus">Добър сигнал. Виж как ще се промени.</p></div>
+          <div class="science-tip"><span class="tip-icon">✳</span><p><strong>Малък жокер</strong><br>Премахни препятствията или премести устройството по-близо за по-силен сигнал.</p></div>
+          <div class="control-buttons"><button class="button primary action-button" id="scanButton" type="button"><span class="button-symbol">⌁</span> Сканирай сигнала</button><button class="icon-button" id="resetTechButton" type="button" aria-label="Нулирай симулацията" title="Нулирай">↻</button></div>
+        </div>
+        <div class="console-foot"><span class="console-foot-pulse"></span><span id="consoleFootText">СИСТЕМАТА Е ГОТОВА</span><span class="console-foot-version">LAB / 01</span></div>
+      </aside>
+    </section>
+
+    <section class="insight-strip"><div class="insight-icon">✧</div><div><p class="eyebrow">ЗАЩО Е ИНТЕРЕСНО?</p><h2 id="insightTitle">Една проста идея. Безкрайни възможности.</h2><p id="insightText">Променяй само една стойност наведнъж, за да разбереш коя промяна причинява различен резултат.</p></div><span class="insight-number" id="insightNumber">01<span>/03</span></span></section>
+
+    <section class="try-next"><div><p class="eyebrow">МИСЛИ КАТО ИЗСЛЕДОВАТЕЛ</p><h2>Експериментът е само началото.</h2><p class="muted">Изследвай друга тема или се върни към ExplainIt и задай собствен въпрос.</p></div><div class="next-actions"><a class="button secondary-button" href="index.html#discover">Други теми <span>↗</span></a><a class="plain-link" href="index.html#ask">Задай въпрос →</a></div></section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"><span class="toast-icon">✦</span><span id="toastText">Мисията започна.</span></div>
+  <div class="celebration-layer" id="celebrationLayer" aria-hidden="true"></div>
+  <footer class="footer wrap"><a class="brand" href="index.html#home"><span class="logo">E</span><span>Explain<span class="accent">It</span><small>РАЗБЕРИ СВЕТА</small></span></a><small>© <span id="year"></span> ExplainIt · Учебна лаборатория</small></footer>
+</body>
+</html>

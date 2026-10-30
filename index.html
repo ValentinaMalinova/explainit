@@ -1,0 +1,197 @@
+
+<!doctype html>
+<html lang="bg">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ExplainIt — разбери света с ясни обяснения и интерактивни експерименти.">
+  <title>ExplainIt — Разбери света</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="header">
+    <a class="brand" href="#home">
+      <span class="logo">E</span>
+      <span>Explain<span class="accent">It</span><small>РАЗБЕРИ СВЕТА</small></span>
+    </a>
+    <button class="menu-button" id="menuButton" aria-label="Отвори меню" aria-expanded="false">☰</button>
+    <nav id="nav">
+      <a href="#discover">Открий</a>
+      <a href="#lab">Лаборатория</a>
+      <a href="#faq">Въпроси</a>
+      <button id="themeButton" class="theme-button" aria-label="Смени темата">☾</button>
+    </nav>
+  </header>
+
+  <main id="home">
+    <section class="hero wrap">
+      <div>
+        <p class="eyebrow"><span class="dot"></span> ЛЮБОПИТСТВОТО Е СУПЕРСИЛА</p>
+        <h1>Разбери света.<br><span class="accent">Едно „защо“</span><br>в даден момент.</h1>
+        <p class="intro">От космоса до нещата около теб — откривай как работи светът чрез кратки обяснения, любопитни факти и интерактивни експерименти.</p>
+        <div class="actions">
+          <a class="button primary" href="#discover">Започни да откриваш <span>↗</span></a>
+          <a class="plain-link" href="#ask">Имам въпрос ↓</a>
+        </div>
+        <p class="note">✦ Без сложни думи. Само ясни идеи.</p>
+      </div>
+      <div class="planet-scene" aria-label="Декоративна илюстрация на планета">
+        <div class="orbit orbit1"></div>
+        <div class="orbit orbit2"></div>
+        <div class="orbit orbit3"></div>
+        <div class="planet"><i></i><b></b></div>
+        <div class="floating floating-top">✦ <span><strong>Бъди любопитен</strong><small>Научи нещо ново днес</small></span></div>
+        <div class="floating floating-bottom">↗ <span><strong>Учи чрез опит</strong><small>Пробвай. Наблюдавай. Разбери.</small></span></div>
+        <span class="star">✧</span>
+      </div>
+    </section>
+
+    <section class="stats wrap">
+      <div><b>01</b><span>Ясни обяснения</span></div>
+      <div><b>02</b><span>Интерактивни опити</span></div>
+      <div><b>03</b><span>Любопитни открития</span></div>
+    </section>
+
+    <section class="wrap section" id="discover">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">ТВОЯТА СЛЕДВАЩА ЗАДАЧА</p>
+          <h2>Какво те <span class="accent">интересува?</span></h2>
+        </div>
+        <p>Избери тема и започни с едно просто обяснение.</p>
+      </div>
+
+      <div class="topic-grid">
+        <button class="topic-card" type="button" data-topic="space" data-question="Какво е черна дупка?">
+          <div class="topic-art space-art"><div class="black-hole"></div><span>✦</span></div>
+          <small>КОСМОС　↗</small>
+          <h3>Тайните на Вселената</h3>
+          <p>Черни дупки, звезди и далечни галактики.</p>
+        </button>
+
+        <button class="topic-card" type="button" data-topic="earth" data-question="Как работи вулканът?">
+          <div class="topic-art volcano-art"><div class="mountain"></div><span class="smoke"></span></div>
+          <small>ЗЕМЯ　↗</small>
+          <h3>Нашата жива планета</h3>
+          <p>Вулкани, земетресения и силите под краката ни.</p>
+        </button>
+
+        <button class="topic-card" type="button" data-topic="tech" data-question="Как работи GPS?">
+          <div class="topic-art tech-art"><div class="phone"><span>●</span></div><i></i></div>
+          <small>ТЕХНОЛОГИИ　↗</small>
+          <h3>Технологии около нас</h3>
+          <p>Как телефонът знае къде се намираш?</p>
+        </button>
+      </div>
+    </section>
+
+    <section class="wrap ask-section" id="ask">
+      <div class="question-mark">?</div>
+      <p class="eyebrow">ТВОЕТО ЛЮБОПИТСТВО Е НАЧАЛОТО</p>
+      <h2>Чудиш се как работи <span class="accent">нещо?</span></h2>
+      <p class="muted">Задай въпрос и ExplainIt ще ти обясни с прости думи. За по-често задавани теми отговорът е готов веднага, а за останалите помага изкуствен интелект.</p>
+
+      <form id="questionForm" autocomplete="off">
+        <label class="sr-only" for="questionInput">Твоят въпрос</label>
+        <input
+          id="questionInput"
+          name="question"
+          type="text"
+          maxlength="300"
+          placeholder="Например: Защо небето е синьо?"
+          aria-controls="questionSuggestions"
+          aria-autocomplete="list"
+          required
+        >
+        <button id="askButton" class="button primary" type="submit">Обясни ми <span>→</span></button>
+      </form>
+
+      <div
+        id="questionSuggestions"
+        class="question-suggestions"
+        role="listbox"
+        aria-label="Предложения за въпроси"
+        hidden
+      ></div>
+      <div class="answer" id="answer" hidden aria-live="polite">
+        <h3 id="answerTitle">Обяснение</h3>
+        <p id="answerText"></p>
+        <ol id="answerSteps"></ol>
+      </div>
+    </section>
+    
+    <section class="wrap section">
+      <div class="quiz-card">
+        <div>
+          <p class="eyebrow">МИНИ ПРЕДИЗВИКАТЕЛСТВО</p>
+          <h2>Провери какво <span class="accent">запомни.</span></h2>
+          <p class="muted">Един бърз въпрос — без оценки и без напрежение.</p>
+        </div>
+
+        <div class="quiz">
+          <p class="eyebrow">ВЪПРОС 1 ОТ 1</p>
+          <h3>Как се нарича разтопената скала, когато е под земята?</h3>
+          <div id="quizOptions">
+            <button type="button" data-answer="lava">Лава</button>
+            <button type="button" data-answer="magma">Магма</button>
+            <button type="button" data-answer="ash">Пепел</button>
+          </div>
+          <p id="quizFeedback" aria-live="polite"></p>
+          <button id="quizReset" type="button" class="plain-link" hidden>Опитай отново ↻</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap section" id="faq">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">FAQ / БЪРЗИ ОТГОВОРИ</p>
+          <h2>Въпроси, които <span class="accent">може би си задаваш.</span></h2>
+        </div>
+        <p>Малките въпроси често водят до големи открития.</p>
+      </div>
+
+      <div class="faq-list">
+        <details>
+          <summary>Как GPS разбира къде се намирам?</summary>
+          <p>Телефонът приема сигнали от навигационни спътници. Като сравнява времето на пристигане на сигналите от няколко спътника, той може да изчисли местоположението си.</p>
+        </details>
+        <details>
+          <summary>Защо небето изглежда синьо?</summary>
+          <p>Молекулите в атмосферата разсейват синята светлина по-силно от червената. Така синя светлина достига до очите ни от много посоки.</p>
+        </details>
+        <details>
+          <summary>Какво е черна дупка?</summary>
+          <p>Черната дупка е област в пространството с изключително силна гравитация. Отвъд границата ѝ дори светлината не може да избяга.</p>
+        </details>
+        <details>
+          <summary>Каква е разликата между магма и лава?</summary>
+          <p>Магма наричаме разтопената скала под земната повърхност. Когато излезе на повърхността, я наричаме лава.</p>
+        </details>
+        <details>
+          <summary>Трябва ли да знам науката предварително?</summary>
+          <p>Не. ExplainIt започва с лесни обяснения и добавя подробности постепенно. Най-важното е да задаваш въпроси.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="wrap closing">
+      <div>
+        <p class="eyebrow">СВЕТЪТ Е ПЪЛЕН СЪС „ЗАЩО“</p>
+        <h2>Продължавай да <span class="accent">питаш.</span></h2>
+      </div>
+      <a href="#ask" class="button primary">Задай въпрос ↑</a>
+    </section>
+  </main>
+
+  <footer class="footer wrap">
+    <a class="brand" href="#home">
+      <span class="logo">E</span>
+      <span>Explain<span class="accent">It</span><small>РАЗБЕРИ СВЕТА</small></span>
+    </a>
+    <p>Създадено от любопитни умове за любопитни умове.</p>
+    <small>© <span id="year"></span> ExplainIt · Учебен проект</small>
+  </footer>
+</body>
+</html>

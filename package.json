@@ -1,0 +1,13 @@
+{
+  "name": "explainit",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "ExplainIt — образователен сайт с AI обяснения",
+  "dependencies": {
+    "@anthropic-ai/sdk": ">=0.40.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
