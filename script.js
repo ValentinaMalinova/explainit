@@ -549,8 +549,8 @@ function renderAnswer(title, text, steps = []) {
   answer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
-// Изпраща въпроса към backend функцията /api/ask,
-// която пази API ключа и разговаря с AI.
+// Изпраща въпроса към /api/ask. Gemini API ключът остава
+// защитен в Environment Variables на Vercel и не се показва в браузъра.
 async function askAI(question) {
   const response = await fetch('/api/ask', {
     method: 'POST',
